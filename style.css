@@ -1,0 +1,179 @@
+/* style.css */
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* 内容从顶部开始 */
+    min-height: 100vh;
+    margin: 0;
+    background-color: #e0ffe0; 
+    color: #333;
+    overflow-x: hidden; /* 防止横向滚动条出现 */
+}
+
+h1 {
+    color: #2e8b57;
+    margin-bottom: 5px; 
+    margin-top: 15px; 
+}
+
+.game-container {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 10px; 
+    text-align: center;
+    position: relative; 
+    /* 匹配 Canvas 宽度 */
+    width: 375px; 
+}
+
+.score-board {
+    font-size: 1.5em; 
+    font-weight: bold;
+    color: #007700;
+    margin-bottom: 10px;
+}
+
+#gameCanvas {
+    background-color: #f7fff7; 
+    border: 2px solid #2e8b57;
+    border-radius: 10px;
+    display: block; 
+    margin: 0 auto;
+    -webkit-tap-highlight-color: transparent; 
+}
+
+/* --- 游戏开始屏幕样式 (匹配 375x812) --- */
+#startScreen {
+    position: absolute;
+    top: 10px; 
+    left: 10px; 
+    /* 匹配 Canvas 的尺寸 */
+    width: 375px; 
+    height: 812px; 
+    
+    background-image: url('assets/game_start_background.png'); 
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    z-index: 10; 
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; 
+    align-items: center;
+    padding-bottom: 60px; 
+}
+
+#startScreen button {
+    padding: 15px 30px;
+    font-size: 1.5em; 
+    font-weight: bold;
+    color: white;
+    background-color: #008000; 
+    border: 3px solid #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 5px #006400;
+    transition: all 0.2s;
+    margin-top: 20px;
+}
+
+#startScreen button:hover {
+    background-color: #006400;
+    transform: translateY(-2px);
+    box-shadow: 0 7px #004d00;
+}
+
+#startScreen button:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px #004d00;
+}
+
+#loadingMessage {
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-bottom: 10px; 
+}
+
+
+/* --- 游戏控制按钮和消息 (适配手机) --- */
+.controls {
+    margin-top: 10px;
+}
+
+.controls button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    font-size: 1em;
+    font-weight: bold;
+    color: white;
+    background-color: #4CAF50; 
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    box-shadow: 0 4px #2e8b57;
+}
+
+.controls button:hover {
+    background-color: #45a049;
+    transform: translateY(-1px);
+    box-shadow: 0 5px #2e8b57;
+}
+
+.controls button:active {
+    transform: translateY(1px);
+    box-shadow: 0 3px #2e8b57;
+}
+
+#pauseButton {
+    background-color: #f44336; 
+    box-shadow: 0 4px #d32f2f;
+}
+
+#pauseButton:hover {
+    background-color: #da190b;
+    box-shadow: 0 5px #d32f2f;
+}
+
+#pauseButton:active {
+    box-shadow: 0 3px #d32f2f;
+}
+
+.game-message {
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: #e65100;
+    font-weight: bold;
+    min-height: 20px; 
+}
+
+/* --- 响应式设计：适配小于 375px 的屏幕 (确保全屏显示) --- */
+@media (max-width: 375px) {
+    .game-container {
+        /* 让容器宽度占满屏幕 */
+        width: 100%;
+        padding: 5px;
+        box-sizing: border-box; 
+    }
+    /* 缩放 Canvas，使其适应容器 */
+    #gameCanvas {
+        max-width: 100%; 
+        height: auto; 
+        border-width: 1px;
+    }
+    /* 调整开始屏幕以适配缩放后的 Canvas */
+    #startScreen {
+        /* width: 100% - 10px padding */
+        width: calc(100% - 10px); 
+        height: 100%;
+        top: 5px;
+        left: 5px;
+    }
+}
